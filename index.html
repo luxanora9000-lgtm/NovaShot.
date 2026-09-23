@@ -1,146 +1,858 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NovaShot</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NovaShot</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
 
-    body {
-      background: #f5f5f5;
-      color: #222;
-    }
+body{
+  background:#0b0b12;
+  color:white;
+  padding-bottom:75px;
+}
 
-    header {
-      background: linear-gradient(90deg, #7b2cff, #ff2f8b);
-      color: white;
-      padding: 18px 20px;
-      font-size: 26px;
-      font-weight: bold;
-      text-align: center;
-    }
+.app{
+  max-width:520px;
+  margin:auto;
+  min-height:100vh;
+  background:#101018;
+}
 
-    .container {
-      max-width: 500px;
-      margin: 20px auto;
-      padding: 10px;
-    }
+/* HEADER */
+.header{
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 18px;
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(16,16,24,.95);
+  border-bottom:1px solid #252532;
+}
 
-    .welcome {
-      background: white;
-      padding: 20px;
-      border-radius: 18px;
-      margin-bottom: 20px;
-      text-align: center;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+.logo{
+  font-size:25px;
+  font-weight:bold;
+  background:linear-gradient(90deg,#9b4dff,#ff3b9d,#ff9b3d);
+  -webkit-background-clip:text;
+  color:transparent;
+}
 
-    .welcome h2 {
-      margin-bottom: 8px;
-    }
+.header-icons{
+  display:flex;
+  gap:18px;
+  font-size:23px;
+}
 
-    .post {
-      background: white;
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 20px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-    }
+/* STORIES */
+.stories{
+  display:flex;
+  gap:15px;
+  overflow-x:auto;
+  padding:17px 15px;
+  border-bottom:1px solid #252532;
+}
 
-    .post-top {
-      padding: 15px;
-      font-weight: bold;
-    }
+.stories::-webkit-scrollbar{
+  display:none;
+}
 
-    .post-image {
-      height: 300px;
-      background: linear-gradient(135deg, #7b2cff, #ff2f8b, #ff9f43);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 42px;
-      font-weight: bold;
-    }
+.story{
+  min-width:65px;
+  text-align:center;
+  font-size:12px;
+}
 
-    .actions {
-      display: flex;
-      gap: 15px;
-      padding: 15px;
-    }
+.story-ring{
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  padding:3px;
+  background:linear-gradient(45deg,#ff9b3d,#ff3b9d,#8c42ff);
+  margin:auto;
+}
 
-    button {
-      border: none;
-      background: #f1f1f1;
-      padding: 10px 15px;
-      border-radius: 12px;
-      font-size: 16px;
-    }
+.story-ring img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  border:3px solid #101018;
+}
 
-    .bottom {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: white;
-      display: flex;
-      justify-content: space-around;
-      padding: 15px;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-    }
-  </style>
+.story p{
+  margin-top:5px;
+}
+
+/* POST */
+.post{
+  border-bottom:8px solid #090910;
+  padding-bottom:15px;
+}
+
+.post-header{
+  display:flex;
+  align-items:center;
+  padding:15px;
+  gap:10px;
+}
+
+.avatar{
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  object-fit:cover;
+}
+
+.username{
+  font-weight:bold;
+}
+
+.location{
+  color:#999;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.more{
+  margin-left:auto;
+  font-size:22px;
+}
+
+.post-image{
+  width:100%;
+  height:390px;
+  object-fit:cover;
+  background:linear-gradient(135deg,#6c2cff,#ff2f91,#ff9b43);
+}
+
+.post-actions{
+  display:flex;
+  gap:20px;
+  padding:13px 15px 5px;
+  font-size:25px;
+}
+
+.action{
+  cursor:pointer;
+}
+
+.save{
+  margin-left:auto;
+}
+
+.likes{
+  padding:0 15px;
+  font-weight:bold;
+  font-size:14px;
+}
+
+.caption{
+  padding:7px 15px;
+  line-height:1.4;
+}
+
+.caption b{
+  margin-right:5px;
+}
+
+.comments{
+  padding:0 15px;
+  color:#8e8e99;
+  font-size:14px;
+  cursor:pointer;
+}
+
+/* BOTTOM NAV */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:100%;
+  max-width:520px;
+  height:68px;
+  background:#15151f;
+  border-top:1px solid #292936;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:20;
+}
+
+.nav-item{
+  font-size:24px;
+  cursor:pointer;
+  text-align:center;
+}
+
+.nav-label{
+  font-size:9px;
+  color:#aaa;
+  margin-top:2px;
+}
+
+.create{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  background:linear-gradient(135deg,#8d43ff,#ff3b9d);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:27px;
+}
+
+/* PAGES */
+.page{
+  display:none;
+  padding:20px 15px;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  font-size:25px;
+  font-weight:bold;
+  margin-bottom:20px;
+}
+
+/* SEARCH */
+.search-box{
+  background:#20202b;
+  border-radius:15px;
+  padding:13px;
+  display:flex;
+  gap:10px;
+}
+
+.search-box input{
+  background:none;
+  border:0;
+  outline:0;
+  color:white;
+  width:100%;
+  font-size:16px;
+}
+
+.search-user{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid #292936;
+}
+
+/* PROFILE */
+.profile-top{
+  text-align:center;
+  padding:15px;
+}
+
+.profile-avatar{
+  width:100px;
+  height:100px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #ff3b9d;
+}
+
+.profile-name{
+  font-size:22px;
+  font-weight:bold;
+  margin-top:10px;
+}
+
+.bio{
+  color:#aaa;
+  margin:8px;
+}
+
+.stats{
+  display:flex;
+  justify-content:space-around;
+  margin:25px 0;
+}
+
+.stat{
+  text-align:center;
+}
+
+.stat b{
+  display:block;
+  font-size:20px;
+}
+
+.edit-btn{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #555;
+  background:#20202b;
+  color:white;
+}
+
+/* REELS */
+.reel{
+  height:480px;
+  border-radius:18px;
+  margin-bottom:20px;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(135deg,#39158c,#ff237d,#ff9143);
+}
+
+.reel-content{
+  position:absolute;
+  bottom:20px;
+  left:15px;
+  right:15px;
+}
+
+.reel-actions{
+  position:absolute;
+  right:15px;
+  bottom:80px;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  font-size:25px;
+}
+
+/* CREATE */
+.upload-box{
+  border:2px dashed #555;
+  border-radius:18px;
+  padding:50px 20px;
+  text-align:center;
+}
+
+.upload-box input{
+  margin-top:20px;
+}
+
+.primary{
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:13px;
+  margin-top:20px;
+  background:linear-gradient(90deg,#8c42ff,#ff3b9d);
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+}
+
+/* NOTIFICATIONS */
+.notification{
+  padding:15px 0;
+  border-bottom:1px solid #292936;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+/* MODAL */
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
+  z-index:50;
+  align-items:flex-end;
+  justify-content:center;
+}
+
+.modal-box{
+  width:100%;
+  max-width:520px;
+  background:#181822;
+  padding:25px;
+  border-radius:25px 25px 0 0;
+}
+
+.modal textarea{
+  width:100%;
+  height:100px;
+  background:#252532;
+  color:white;
+  border:0;
+  border-radius:12px;
+  padding:12px;
+  margin-top:15px;
+}
+
+.close{
+  float:right;
+  font-size:25px;
+  cursor:pointer;
+}
+
+@media(min-width:600px){
+  body{
+    background:#050509;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <header>✨ NovaShot</header>
+<div class="app">
 
-  <div class="container">
-
-    <div class="welcome">
-      <h2>Welcome to NovaShot</h2>
-      <p>Share · Connect · Be You</p>
-    </div>
-
-    <div class="post">
-      <div class="post-top">👤 NovaShot Creator</div>
-
-      <div class="post-image">
-        NovaShot
-      </div>
-
-      <div class="actions">
-        <button onclick="likePost()">❤️ Like</button>
-        <button onclick="commentPost()">💬 Comment</button>
-        <button>↗️ Share</button>
-      </div>
-    </div>
-
+<!-- HEADER -->
+<div class="header">
+  <div class="logo">✦ NovaShot</div>
+  <div class="header-icons">
+    <span onclick="openPage('notifications')">♡</span>
+    <span onclick="openPage('messages')">✈</span>
   </div>
+</div>
 
-  <div class="bottom">
-    <span>🏠 Home</span>
-    <span>🔍 Search</span>
-    <span>➕ Create</span>
-    <span>👤 Profile</span>
-  </div>
 
-  <script>
-    function likePost() {
-      alert("❤️ You liked this post!");
-    }
+<!-- HOME -->
+<section id="home" class="page active">
 
-    function commentPost() {
-      alert("💬 Comment feature coming soon!");
-    }
-  </script>
+<div class="stories">
+
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/100?img=47">
+</div>
+<p>Your Story</p>
+</div>
+
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/100?img=32">
+</div>
+<p>Aarav</p>
+</div>
+
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/100?img=44">
+</div>
+<p>Priya</p>
+</div>
+
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/100?img=12">
+</div>
+<p>Rahul</p>
+</div>
+
+<div class="story">
+<div class="story-ring">
+<img src="https://i.pravatar.cc/100?img=25">
+</div>
+<p>Creator</p>
+</div>
+
+</div>
+
+
+<!-- POST 1 -->
+<div class="post">
+
+<div class="post-header">
+<img class="avatar" src="https://i.pravatar.cc/100?img=12">
+<div>
+<div class="username">Nova Creator</div>
+<div class="location">New Delhi</div>
+</div>
+<div class="more">•••</div>
+</div>
+
+<img class="post-image"
+src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80">
+
+<div class="post-actions">
+<span class="action" onclick="like(this)">♡</span>
+<span class="action" onclick="comment()">💬</span>
+<span class="action">↗</span>
+<span class="action save">🔖</span>
+</div>
+
+<div class="likes">1,248 likes</div>
+
+<div class="caption">
+<b>Nova Creator</b>
+Exploring new moments ✨ Welcome to NovaShot!
+</div>
+
+<div class="comments" onclick="comment()">View all 86 comments</div>
+
+</div>
+
+
+<!-- POST 2 -->
+<div class="post">
+
+<div class="post-header">
+<img class="avatar" src="https://i.pravatar.cc/100?img=32">
+<div>
+<div class="username">Aarav</div>
+<div class="location">Mumbai</div>
+</div>
+<div class="more">•••</div>
+</div>
+
+<img class="post-image"
+src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80">
+
+<div class="post-actions">
+<span class="action" onclick="like(this)">♡</span>
+<span class="action" onclick="comment()">💬</span>
+<span class="action">↗</span>
+<span class="action save">🔖</span>
+</div>
+
+<div class="likes">842 likes</div>
+
+<div class="caption">
+<b>Aarav</b>
+Life is better when you explore 🌎
+</div>
+
+<div class="comments" onclick="comment()">View all 42 comments</div>
+
+</div>
+
+</section>
+
+
+<!-- SEARCH -->
+<section id="search" class="page">
+
+<div class="page-title">Search</div>
+
+<div class="search-box">
+🔍
+<input type="text" placeholder="Search people or topics..." onkeyup="searchUsers(this.value)">
+</div>
+
+<div id="searchResults">
+
+<div class="search-user">
+<img class="avatar" src="https://i.pravatar.cc/100?img=12">
+<div>
+<b>Nova Creator</b>
+<p style="color:#888">@novacreator</p>
+</div>
+</div>
+
+<div class="search-user">
+<img class="avatar" src="https://i.pravatar.cc/100?img=32">
+<div>
+<b>Aarav</b>
+<p style="color:#888">@aarav</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- REELS -->
+<section id="reels" class="page">
+
+<div class="page-title">Reels</div>
+
+<div class="reel">
+
+<div class="reel-actions">
+<span onclick="like(this)">♡</span>
+<span onclick="comment()">💬</span>
+<span>↗</span>
+</div>
+
+<div class="reel-content">
+<b>@NovaCreator</b>
+<p style="margin-top:8px;">Create. Share. Be You. ✨</p>
+</div>
+
+</div>
+
+<div class="reel" style="background:linear-gradient(135deg,#111,#783cff,#ff3b9d);">
+
+<div class="reel-actions">
+<span onclick="like(this)">♡</span>
+<span onclick="comment()">💬</span>
+<span>↗</span>
+</div>
+
+<div class="reel-content">
+<b>@Aarav</b>
+<p style="margin-top:8px;">New day, new adventure 🚀</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CREATE -->
+<section id="create" class="page">
+
+<div class="page-title">Create Post</div>
+
+<div class="upload-box">
+
+<div style="font-size:50px;">📸</div>
+
+<h2 style="margin-top:15px;">Create something amazing</h2>
+
+<p style="color:#999;margin-top:8px;">
+Share photos and moments with NovaShot
+</p>
+
+<input type="file" accept="image/*">
+
+</div>
+
+<button class="primary" onclick="createPost()">
+Share Post
+</button>
+
+</section>
+
+
+<!-- NOTIFICATIONS -->
+<section id="notifications" class="page">
+
+<div class="page-title">Notifications</div>
+
+<div class="notification">
+<img class="avatar" src="https://i.pravatar.cc/100?img=32">
+<div>
+<b>Aarav</b> liked your post ❤️
+<p style="color:#777;font-size:12px;">2 minutes ago</p>
+</div>
+</div>
+
+<div class="notification">
+<img class="avatar" src="https://i.pravatar.cc/100?img=44">
+<div>
+<b>Priya</b> started following you ✨
+<p style="color:#777;font-size:12px;">10 minutes ago</p>
+</div>
+</div>
+
+<div class="notification">
+<img class="avatar" src="https://i.pravatar.cc/100?img=25">
+<div>
+<b>Creator</b> commented on your post 💬
+<p style="color:#777;font-size:12px;">1 hour ago</p>
+</div>
+</div>
+
+</section>
+
+
+<!-- PROFILE -->
+<section id="profile" class="page">
+
+<div class="profile-top">
+
+<img class="profile-avatar"
+src="https://i.pravatar.cc/200?img=47">
+
+<div class="profile-name">Nova User</div>
+
+<div class="bio">
+✨ Welcome to my NovaShot profile
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<b>24</b>
+Posts
+</div>
+
+<div class="stat">
+<b>1.8K</b>
+Followers
+</div>
+
+<div class="stat">
+<b>420</b>
+Following
+</div>
+
+</div>
+
+<button class="edit-btn">
+Edit Profile
+</button>
+
+</div>
+
+</section>
+
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+
+<div class="nav-item" onclick="openPage('home')">
+🏠
+<div class="nav-label">Home</div>
+</div>
+
+<div class="nav-item" onclick="openPage('search')">
+🔍
+<div class="nav-label">Search</div>
+</div>
+
+<div class="nav-item create" onclick="openPage('create')">
+＋
+</div>
+
+<div class="nav-item" onclick="openPage('reels')">
+🎬
+<div class="nav-label">Reels</div>
+</div>
+
+<div class="nav-item" onclick="openPage('profile')">
+👤
+<div class="nav-label">Profile</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- COMMENT MODAL -->
+<div class="modal" id="commentModal">
+
+<div class="modal-box">
+
+<span class="close" onclick="closeComment()">×</span>
+
+<h2>Comments</h2>
+
+<textarea id="commentText"
+placeholder="Write a comment..."></textarea>
+
+<button class="primary" onclick="sendComment()">
+Post Comment
+</button>
+
+</div>
+
+</div>
+
+
+<script>
+
+function openPage(page){
+
+document.querySelectorAll('.page').forEach(function(p){
+p.classList.remove('active');
+});
+
+document.getElementById(page).classList.add('active');
+
+window.scrollTo(0,0);
+}
+
+
+function like(element){
+
+if(element.innerHTML === "♡"){
+
+element.innerHTML="❤️";
+
+}else{
+
+element.innerHTML="♡";
+
+}
+
+}
+
+
+function comment(){
+
+document.getElementById("commentModal").style.display="flex";
+
+}
+
+
+function closeComment(){
+
+document.getElementById("commentModal").style.display="none";
+
+}
+
+
+function sendComment(){
+
+let text=document.getElementById("commentText").value;
+
+if(text.trim()===""){
+
+alert("Please write a comment.");
+
+return;
+
+}
+
+alert("Comment posted! 💬");
+
+document.getElementById("commentText").value="";
+
+closeComment();
+
+}
+
+
+function createPost(){
+
+alert("Your post has been created! 🎉");
+
+}
+
+
+function searchUsers(value){
+
+let results=document.getElementById("searchResults");
+
+if(value.trim()===""){
+
+return;
+
+}
+
+results.innerHTML=`
+<div class="search-user">
+<img class="avatar" src="https://i.pravatar.cc/100?img=47">
+<div>
+<b>${value}</b>
+<p style="color:#888">@${value.toLowerCase()}</p>
+</div>
+</div>
+`;
+
+}
+
+</script>
 
 </body>
   </html>
