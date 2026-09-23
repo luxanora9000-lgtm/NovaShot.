@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NovaShot</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(90deg, #7b2cff, #ff2f8b);
+      color: white;
+      padding: 18px 20px;
+      font-size: 26px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 20px auto;
+      padding: 10px;
+    }
+
+    .welcome {
+      background: white;
+      padding: 20px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .welcome h2 {
+      margin-bottom: 8px;
+    }
+
+    .post {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .post-top {
+      padding: 15px;
+      font-weight: bold;
+    }
+
+    .post-image {
+      height: 300px;
+      background: linear-gradient(135deg, #7b2cff, #ff2f8b, #ff9f43);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 42px;
+      font-weight: bold;
+    }
+
+    .actions {
+      display: flex;
+      gap: 15px;
+      padding: 15px;
+    }
+
+    button {
+      border: none;
+      background: #f1f1f1;
+      padding: 10px 15px;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 15px;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>✨ NovaShot</header>
+
+  <div class="container">
+
+    <div class="welcome">
+      <h2>Welcome to NovaShot</h2>
+      <p>Share · Connect · Be You</p>
+    </div>
+
+    <div class="post">
+      <div class="post-top">👤 NovaShot Creator</div>
+
+      <div class="post-image">
+        NovaShot
+      </div>
+
+      <div class="actions">
+        <button onclick="likePost()">❤️ Like</button>
+        <button onclick="commentPost()">💬 Comment</button>
+        <button>↗️ Share</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <span>🏠 Home</span>
+    <span>🔍 Search</span>
+    <span>➕ Create</span>
+    <span>👤 Profile</span>
+  </div>
+
+  <script>
+    function likePost() {
+      alert("❤️ You liked this post!");
+    }
+
+    function commentPost() {
+      alert("💬 Comment feature coming soon!");
+    }
+  </script>
+
+</body>
+  </html>
