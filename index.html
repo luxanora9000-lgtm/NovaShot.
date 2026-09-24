@@ -853,6 +853,25 @@ results.innerHTML=`
 }
 
 </script>
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+  import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
+  const firebaseConfig = {
+    apiKey: "AIzaSyCqEzKueoaDGJN6qxR_YRE49Hr0qqMa7G0",
+    authDomain: "novashot-d2d9b.firebaseapp.com",
+    projectId: "novashot-d2d9b",
+    storageBucket: "novashot-d2d9b.firebasestorage.app",
+    messagingSenderId: "1041060031501",
+    appId: "1:1041060031501:web:b40f491c3af5e41e283944"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  console.log("NovaShot Firebase connected!");
+</script>
 </body>
   </html>
